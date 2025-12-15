@@ -1,5 +1,5 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS com.palantir:javapoet:1.13.0
+//DEPS com.palantir:javapoet:0.9.0
 //DEPS com.google.code.gson:gson:2.10.1
 
 import com.palantir.javapoet.*;
