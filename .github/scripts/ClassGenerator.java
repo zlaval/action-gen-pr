@@ -21,9 +21,9 @@ public class ClassGenerator {
             System.exit(1);
         }
 
-        String packageName = args[0].trim();
-        String className = args[1].trim();
-        String fieldsRaw = args[2].trim(); 
+        String packageName = args[0].trim().replace("\"", "").replace("'", "");
+        String className = args[1].trim().replace("\"", "").replace("'", "");
+        String fieldsRaw = args[2].trim().replace("\"", "").replace("'", "");
         String targetDir = "src/main/java";
 
         if (className.contains("\\") || className.contains("/")) {
