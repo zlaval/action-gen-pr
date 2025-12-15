@@ -26,6 +26,10 @@ public class ClassGenerator {
         String fieldsRaw = args[2].trim(); 
         String targetDir = "src/main/java";
 
+        if (className.contains("\\") || className.contains("/")) {
+            throw new IllegalArgumentException("Wrong Classname: '" + className + "'.");
+        }
+
         TypeSpec.Builder classBuilder = TypeSpec.classBuilder(className)
                 .addModifiers(Modifier.PUBLIC);
 
@@ -35,7 +39,7 @@ public class ClassGenerator {
         for (String fieldPair : fields) {
             String[] parts = fieldPair.trim().split(":");
             if (parts.length != 2) {
-                System.out.println("Hiba: Érvénytelen mező definíció: " + fieldPair);
+                System.out.println("Error: Unsupported field definition: " + fieldPair);
                 continue;
             }
 
@@ -47,7 +51,7 @@ public class ClassGenerator {
             if (fType.equalsIgnoreCase("String")) {
                 typeName = ClassName.get(String.class);
             } else if (fType.equalsIgnoreCase("int") || fType.equalsIgnoreCase("Integer")) {
-                typeName =  ClassName.get(Integer.class); // Vagy ClassName.get(Integer.class) ha objektum kell
+                typeName =  ClassName.get(Integer.class); 
             } else if (fType.equalsIgnoreCase("Long")) {
                 typeName = ClassName.get(Long.class);
             } else if (fType.equalsIgnoreCase("boolean")) {
@@ -70,6 +74,6 @@ public class ClassGenerator {
         File outputDir = new File(targetDir);
         javaFile.writeTo(outputDir);
         
-        System.out.println("Generálva: " + outputDir.getPath() + "/" + packageName.replace('.', '/') + "/" + className + ".java");
+        System.out.println("Generated: " + outputDir.getPath() + "/" + packageName.replace('.', '/') + "/" + className + ".java");
     }
 }
