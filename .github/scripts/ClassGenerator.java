@@ -1,5 +1,5 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//DEPS com.palantir.javapoet:javapoet:0.9.0
+//DEPS com.squareup:javapoet:1.13.0
 //DEPS com.google.code.gson:gson:2.10.1
 
 import com.palantir.javapoet.*;
@@ -10,7 +10,7 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import java.lang.reflect.Type;
-
+// com.palantir.javapoet:javapoet:0.9.0
 public class ClassGenerator {
 
     static class FieldDefinition {
