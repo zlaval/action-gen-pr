@@ -21,9 +21,9 @@ public class ClassGenerator {
             System.exit(1);
         }
 
-        String packageName = args[0];
-        String className = args[1];
-        String fieldsRaw = args[2]; 
+        String packageName = args[0].trim();
+        String className = args[1].trim();
+        String fieldsRaw = args[2].trim(); 
         String targetDir = "src/main/java";
 
         TypeSpec.Builder classBuilder = TypeSpec.classBuilder(className)
