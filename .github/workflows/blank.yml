@@ -29,19 +29,24 @@ jobs:
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
+        id: setup-java
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: Install JBang
-        uses: jbangdev/jbang-action@v0.135.1
-        with:
-          script: .github/scripts/ClassGenerator.java
-          scriptargs: |
-            jbang .github/scripts/ClassGenerator.java \
-              "${{ inputs.packageName }}" \
-              "${{ inputs.className }}" \
-              '${{ inputs.fieldsJson }}'
+        run: |
+          curl -Ls https://sh.jbang.dev | bash -s - app install --force-mode=user jbang@jbangdev/jbang
+          echo "$HOME/.jbang/bin" >> $GITHUB_PATH
+
+      - name: Run ClassGenerator script with JBang
+        run: |
+          jbang .github/scripts/ClassGenerator.java \
+            "${{ inputs.packageName }}" \
+            "${{ inputs.className }}" \
+            '${{ inputs.fieldsJson }}'
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
