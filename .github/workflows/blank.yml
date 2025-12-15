@@ -43,6 +43,9 @@ jobs:
           "${{ inputs.className }}"
           "${{ inputs.fields }}"
 
+      - name: Fix file permissions
+        run: sudo chmod -R 777 src/main/java
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
