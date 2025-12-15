@@ -2,7 +2,8 @@
 //DEPS com.squareup:javapoet:1.13.0
 //DEPS com.google.code.gson:gson:2.10.1
 
-import com.palantir.javapoet.*;
+//import com.palantir.javapoet.*;
+import com.squareup.javapoet.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javax.lang.model.element.Modifier;
