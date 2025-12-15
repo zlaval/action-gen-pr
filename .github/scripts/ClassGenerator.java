@@ -12,12 +12,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.lang.reflect.Type;
 // com.palantir.javapoet:javapoet:0.9.0
-public class ClassGenerator {
-
-    static class FieldDefinition {
-        String name;
-        String type;
-    }
 
 public class ClassGenerator {
 
