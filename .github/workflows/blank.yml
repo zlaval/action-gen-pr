@@ -34,14 +34,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install JBang
-        run: |
-          curl -Ls https://sh.jbang.dev | bash -s - app install --force jbang@jbangdev/jbang
-          echo "$HOME/.jbang/bin" >> $GITHUB_PATH
-
-      - name: Run ClassGenerator script with JBang
-        run: |
-          jbang .github/scripts/ClassGenerator.java \
+      - name: Install and run JBang
+        uses: jbangdev/jbang-action@v0.135.1
+        with:
+          script: .github/scripts/ClassGenerator.java
+          scriptargs: |
             "${{ inputs.packageName }}" \
             "${{ inputs.className }}" \
             '${{ inputs.fieldsJson }}'
