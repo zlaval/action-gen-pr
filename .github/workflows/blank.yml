@@ -32,7 +32,7 @@ jobs:
         id: setup-java
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
 
       - name: Install and run JBang
         uses: jbangdev/jbang-action@v0.135.1
