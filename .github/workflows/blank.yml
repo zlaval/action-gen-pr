@@ -36,14 +36,13 @@ jobs:
 
       - name: Install and run JBang
         uses: jbangdev/jbang-action@v0.135.1
-        with:
-          script: .github/scripts/ClassGenerator.java
-          scriptargs: |
-            "${{ inputs.packageName }}" \
-            "${{ inputs.className }}" \
-            "${{ inputs.fields }}"
-        env:
-          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
+
+      - name: Generate Code
+        run: >
+          jbang .github/scripts/ClassGenerator.java
+          "${{ inputs.packageName }}"
+          "${{ inputs.className }}"
+          "${{ inputs.fields }}"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
