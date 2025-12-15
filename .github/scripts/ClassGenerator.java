@@ -12,7 +12,7 @@ import java.util.List;
 import java.lang.reflect.Type;
 
 public class ClassGenerator {
-z
+
     static class FieldDefinition {
         String name;
         String type;
