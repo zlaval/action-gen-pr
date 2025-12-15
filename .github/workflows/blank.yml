@@ -50,13 +50,5 @@ jobs:
           commit-message: "feat: Generate class ${{ inputs.className }}"
           branch: "auto-gen/${{ inputs.className }}"
           title: "Auto-generated class: ${{ inputs.className }}"
-          body: |
-             Automatic PR.
-            
-            **Class**: `${{ inputs.className }}`
-            **Package**: `${{ inputs.packageName }}`
-            **Fields**:
-            ```json
-            ${{ inputs.fieldsJson }}
-            ```
+          body: "new PR"
           base: main
