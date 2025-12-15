@@ -11,10 +11,10 @@ on:
         description: 'Class name'
         required: true
         default: 'UserModel'
-      fieldsJson:
-        description: 'Mezők JSON formátumban ([{"name":"x","type":"String"}])'
+      fields:
+        description: 'Fiels'
         required: true
-        default: '[{"name":"myField","type":"String"}]'
+        default: 'id:Long,name:String,'
 
 jobs:
   generate-and-pr:
@@ -41,7 +41,7 @@ jobs:
           scriptargs: |
             "${{ inputs.packageName }}" \
             "${{ inputs.className }}" \
-            '${{ inputs.fieldsJson }}'
+            "${{ inputs.fields }}"
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.path }}
 
