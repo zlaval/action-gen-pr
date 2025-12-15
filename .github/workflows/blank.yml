@@ -36,7 +36,7 @@ jobs:
 
       - name: Install JBang
         run: |
-          curl -Ls https://sh.jbang.dev | bash -s - app install --force-mode=user jbang@jbangdev/jbang
+          curl -Ls https://sh.jbang.dev | bash -s - app install --force jbang@jbangdev/jbang
           echo "$HOME/.jbang/bin" >> $GITHUB_PATH
 
       - name: Run ClassGenerator script with JBang
